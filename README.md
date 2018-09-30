@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+開發一個測試 csv upload 功能是否可行的小專案
 
-Things you may want to cover:
+預計目標:
 
-* Ruby version
+* 在本地端測試 csv upload 要可行
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 推到 heroku 要可行
