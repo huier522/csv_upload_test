@@ -1,0 +1,33 @@
+<h2>CSV_Upload_Test</h2>
+
+<%= link_to 'Export to CSV', reports_path(format: 'csv') %>
+
+<%= form_tag import_reports_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag 'Import CSV' %>
+<% end %>
+
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>phone_num</th>
+      <th>rp_offer</th>
+      <th>expiration_date</th>
+      <th>trigger_date</th>
+      <th>init_date</th>
+      <th>init_ivr_code</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+            <td><%= report.phone_num %></td>
+            <td><%= report.rp_offer %></td>
+            <td><%= report.expiration_date %></td>
+            <td><%= report.trigger_date %></td>
+            <td><%= report.init_date %></td>
+            <td><%= report.init_ivr_code %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
