@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
 
   def index
-    @reports = Report.all
+    @reports = Report.page(params[:page]).per(50)
     respond_to do |format|
       format.html
       format.csv { send_data @reports.to_csv(
