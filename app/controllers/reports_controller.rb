@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
 
   def import
     Report.import(params[:file])
-    redirect_to root_path, notice: 'CSV uploaded successfully'
+    redirect_to root_path, notice: 'Report importd successfully'
   end
 
 end
