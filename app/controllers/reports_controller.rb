@@ -12,8 +12,14 @@ class ReportsController < ApplicationController
   end
 
   def import
-    Report.import(params[:file])
-    redirect_to root_path, notice: 'Report importd successfully'
+    if params[:file] == nil
+      flash[:alert] = "Need to import file"
+      redirect_to root_path
+    else
+      Report.import(params[:file])
+      redirect_to root_path
+      flash[:notice] = "File importd successfully"
+    end
   end
 
 end
