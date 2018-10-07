@@ -16,9 +16,14 @@ class ReportsController < ApplicationController
       flash[:alert] = "Need to import file"
       redirect_to root_path
     else
-      Report.import(params[:file])
-      redirect_to root_path
-      flash[:notice] = "File importd successfully"
+      if Report.check_header_name(params[:file])
+        Report.import(params[:file])
+        redirect_to root_path
+        flash[:notice] = "File importd successfully"
+      else
+        flash[:alert] = "檔案格式錯誤"
+        redirect_to root_path
+      end
     end
   end
 

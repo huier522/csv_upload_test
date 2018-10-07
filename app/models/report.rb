@@ -1,5 +1,7 @@
 class Report < ApplicationRecord
 
+  # validates :phone_num, :rp_offer, :expiration_date, :trigger_date, :init_date, :init_ivr_code, presence: true
+
   # Generate a CSV File of All Report Records
   def self.to_csv(fields = column_names, options={})
     CSV.generate(options) do |csv|
@@ -10,7 +12,7 @@ class Report < ApplicationRecord
     end
   end
 
-  # Import CSV, Find or Create Report by its phone number
+  # Import CSV & Excel, Find or Create Report by its phone number
   # Update the record
   def self.import(file)
     spreadsheet = Roo::Spreadsheet.open(file.path)
@@ -38,6 +40,18 @@ class Report < ApplicationRecord
     else 
       raise "Unknow file type: #{file.original_filename}"
     end  
+  end
+
+  def self.check_header_name(file)
+    spreadsheet = Roo::Spreadsheet.open(file.path)
+    header1 = spreadsheet.row(1).to_ary
+    header2 = ["門號", "RP Offer", "上網期限到期日", "落地觸發日", "啟用日", "啟用IVR CODE"]
+    (0...header1.size).each do |h|
+      if header1[h] != header2[h]
+        return false
+      end
+    end
+    return true
   end
 
 end
