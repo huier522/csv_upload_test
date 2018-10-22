@@ -24,11 +24,14 @@
       "name": "Rails server",
       "type": "Ruby",
       "request": "launch",
+      "useBundler": true,
+      "showDebuggerOutput": true,
       "cwd": "${workspaceRoot}",
       "program": "${workspaceRoot}/bin/rails",
       "args": [
         "server"
-      ]
+      ],
+      "pathToRDebugIDE": "/usr/local/lib/ruby/gems/2.5.0/gems/ruby-debug-ide-0.6.1/bin/rdebug-ide"
     },
     {
       "name": "RSpec - all",
